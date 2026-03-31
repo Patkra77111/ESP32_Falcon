@@ -1,0 +1,7 @@
+Uaktualnione SW_MEC_5G z BOOT do BOOT1.
+Uaktualnione 22u z C2_tantalum do C2_tantalum1.
+Uaktualnione 22u z C3_tantalum do C3_tantalum1.
+Uaktualnione SW_MEC_5G z EN do EN1.
+Uaktualnione SW_MEC_5G z USER_BUTTON do USER_BUTTON1.
+Numerowanie wykonane.
+Numerowanie wykonane.
