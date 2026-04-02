@@ -3,7 +3,7 @@ Jest to customowa płytka deweloperska oparta na module ESP32-S3, była ona insp
 
 ## Specyfikacja
 **Mikrokontroler:** ESP32-S3-WROOM-1.
-**Komunikacja i Zasilanie:** Złącze USB-C z układem zabezpieczającym ESD.
+* **Komunikacja i Zasilanie:** Złącze USB-C z układem zabezpieczającym ESD.
 **Czujniki:** Zintegrowany czujnik IMU BMI270 podłączony przez I2C.
 **Rozszerzalność:** Wyprowadzenia sygnałowe na złączach goldpin w układzie Nucleo.
 
