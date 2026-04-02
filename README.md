@@ -4,28 +4,21 @@ Jest to customowa płytka deweloperska oparta na module ESP32-S3, była ona insp
 ## Specyfikacja
 **Mikrokontroler:** ESP32-S3-WROOM-1.
 * **Komunikacja i Zasilanie:** Złącze USB-C z układem zabezpieczającym ESD.
-**Czujniki:** Zintegrowany czujnik IMU BMI270 podłączony przez I2C.
-**Rozszerzalność:** Wyprowadzenia sygnałowe na złączach goldpin w układzie Nucleo.
+* **Czujniki:** Zintegrowany czujnik IMU BMI270 podłączony przez I2C.
+* **Rozszerzalność:** Wyprowadzenia sygnałowe na złączach goldpin w układzie Nucleo.
 
-### 1. Schemat Ideowy
-![Schemat Ideowy](TUTAJ_WKLEJ_LINK_DO_ZDJECIA_SCHEMATU.png)
+### 1. Schemat 
+<img width="1091" height="750" alt="schemat" src="https://github.com/user-attachments/assets/3b5f12c3-bf0b-4cf8-9656-b9ab7f76aa01" />
 
 ### 2. Layout PCB
-![Layout PCB](TUTAJ_WKLEJ_LINK_DO_ZDJECIA_PCB.png)
+<img width="432" height="705" alt="PCB" src="https://github.com/user-attachments/assets/ffe84b1b-a73e-4062-a804-951d1d8a037c" />
+
 
 ### 3. Model 3D
-![Model 3D](TUTAJ_WKLEJ_LINK_DO_ZDJECIA_3D.png)
+<img width="877" height="748" alt="3D" src="https://github.com/user-attachments/assets/30c8f13f-3bba-4105-83d7-789b016f3b9c" />
 
-## 🧠 Główne Decyzje Projektowe i Zasady EMC
-Podczas projektowania layoutu PCB szczególną uwagę zwróciłem na:
-1. **Prowadzenie sygnałów USB (D+/D-):** Linie danych z USB-C zostały poprowadzone jako para różnicowa na jednej warstwie, łeb w łeb, bez użycia przelotek, w celu zachowania spójności impedancji. Ominąłem je szerokim łukiem od grubszych ścieżek zasilających.
-2. **Zachowanie strefy Keepout dla anteny:** Moduł ESP32-S3 został umieszczony na krawędzi płytki, a jego antena znajduje się całkowicie poza obrysem miedzi i laminatu, aby uniknąć tłumienia sygnału Wi-Fi/Bluetooth.
-3. **Dystrybucja Zasilania i Decoupling:** Zastosowałem topologię gwiazdy/drzewa, prowadząc grube ścieżki zasilające (0.4mm - 0.5mm) bezpośrednio do głównych odbiorników. Kondensatory filtrujące (100nF i 22uF) zostały umieszczone w bezpośrednim sąsiedztwie pinów zasilających ESP32 oraz BMI270, a ścieżki poprowadzono bezpośrednio przez ich pady.
-4. **Wylewki GND (Copper Pours):** Zastosowałem wylewki masy na obu stronach laminatu (F.Cu oraz B.Cu). Aby wyeliminować problem "wysp miedzi" i zapewnić krótką drogę powrotną dla sygnałów, połacie masy zostały połączone za pomocą przelotek zszywających (Via Stitching).
-5. **Dostosowanie produkcyjne:** Usunąłem błędy zwężania przerw między ścieżkami a układem BMI270 (necking down do 0.25mm) oraz wymusiłem pełne zalanie padów masy dla mniejszych komponentów, zapewniając zgodność z limitami DRC dla tanich fabryk (otwory 0.2mm).
-
-## 📁 Zawartość Repozytorium
-* `projekt_kicad/` - Pliki źródłowe projektu (schemat, layout).
-* [cite_start]`gerbery/` - Gotowe pliki produkcyjne (Gerber + pliki owierceń)[cite: 23].
-* [cite_start]`BOM.csv` - Zestawienie materiałowe wszystkich komponentów[cite: 23].
-* [cite_start]`ESP32_Falcon.step` - Wyeksportowany model 3D całej płytki[cite: 27].
+## Główne Decyzje Projektowe i Zasady EMC
+1. **Prowadzenie sygnałów USB (D+/D-):** Linie danych z USB-C zostały poprowadzone jako para różnicowa na jednej warstwie, bez użycia przelotek, w celu zachowania spójności impedancji.
+2. **Zachowanie strefy Keepout dla anteny:** Moduł ESP32-S3 został umieszczony na krawędzi płytki, a jego antena znajduje się całkowicie poza obrysem miedzi i laminatu, aby uniknąć tłumienia sygnału.
+3. **Dystrybucja Zasilania i Decoupling:** Ścieżki zasilające mają odpowiednią grubość (0.4mm - 0.5mm) i są prowadzone bezpośrednio do głównych odbiorników. Kondensatory filtrujące zostały umieszczone w bezpośrednim sąsiedztwie pinów zasilających ESP32 oraz BMI270.
+4. **Wylewki GND (Copper Pours):** Wylewki masy na obu stronach laminatu. Połacie masy zostały połączone za pomocą przelotek.
